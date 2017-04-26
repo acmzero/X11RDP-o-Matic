@@ -191,7 +191,7 @@ x11proto-xcmisc-dev
 x11proto-dri2-dev
 x11proto-fonts-dev
 libgl1-mesa-dev libxkbfile-dev libxfont-dev libpciaccess-dev dh-make gettext
-xfonts-utils)
+xfonts-utils nasm)
 
 # libtool binaries are separated to libtool-bin package since Ubuntu 15.04
 # if libtool-bin package exists, add it to REQUIREDPACKAGES
