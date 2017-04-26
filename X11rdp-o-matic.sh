@@ -489,7 +489,7 @@ compile_xrdp_interactive()
   rm README.Debian
   rm README.source
   cp ../COPYING copyright # use the xrdp copyright file
-  cp ../readme.txt README # use the xrdp readme.txt as the README file
+  cp ../README.md README # use the xrdp readme.txt as the README file
   cp "$BASEDIR/debian/postinst" postinst # postinst to create xrdp init.d defaults
   cp "$BASEDIR/debian/control" control # use a generic control file
   cp "$BASEDIR/debian/prerm" prerm # pre-removal script
@@ -531,7 +531,7 @@ compile_xrdp_noninteractive()
   rm README.Debian
   rm README.source
   cp ../COPYING copyright # use the xrdp copyright file
-  cp ../readme.txt README # use the xrdp readme.txt as the README file
+  cp ../README.md README # use the xrdp readme.txt as the README file
   cp "$BASEDIR/debian/postinst" postinst # postinst to create xrdp init.d defaults
   cp "$BASEDIR/debian/control" control # use a generic control file
   cp "$BASEDIR/debian/prerm" prerm # pre-removal script
@@ -676,16 +676,18 @@ welcome_message()
 # Worked out from the chosen branch.
 calculate_version_num()
 {
-  README="https://raw.github.com/neutrinolabs/xrdp/$XRDPBRANCH/readme.txt"
-  wget --no-check-certificate -O "$TMPFILE" "$README" >& /dev/null
-  VERSION=$(grep xrdp "$TMPFILE" | head -1 | cut -d " " -f2)
-  rm -f "$TMPFILE"
-  if [ "${XRDPBRANCH#v}" = "$XRDPBRANCH" ]
-  then
-    VERSION="$VERSION+$XRDPBRANCH"
-  fi
-  echo "Debian package version number will be : $VERSION"
-  echo $LINE
+#  readme.txt does not exists anymore
+  VERSION="0.9.2+master" #FIXME: calculate version from repo
+#  README="https://raw.github.com/neutrinolabs/xrdp/$XRDPBRANCH/readme.txt"
+#  wget --no-check-certificate -O "$TMPFILE" "$README" >& /dev/null
+#  VERSION=$(grep xrdp "$TMPFILE" | head -1 | cut -d " " -f2)
+#  rm -f "$TMPFILE"
+#  if [ "${XRDPBRANCH#v}" = "$XRDPBRANCH" ]
+#  then
+#    VERSION="$VERSION+$XRDPBRANCH"
+#  fi
+#  echo "Debian package version number will be : $VERSION"
+#  echo $LINE
 }
 
 # Make a directory, to which the X11rdp build system will
